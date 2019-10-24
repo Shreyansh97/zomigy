@@ -4,6 +4,7 @@
     [email]    VARCHAR (50) NOT NULL,
     [password] VARCHAR (50) NOT NULL,
     [admin]    BIT          DEFAULT ((0)) NOT NULL,
-    PRIMARY KEY CLUSTERED ([Id] ASC)
+    PRIMARY KEY CLUSTERED ([Id] ASC), 
+    CONSTRAINT [UNIQUE_KEY] UNIQUE ([email])
 );
 

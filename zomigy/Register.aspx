@@ -17,6 +17,7 @@
             <br />
             <asp:Button ID="btnSignup" runat="server" Text="Signup" OnClick="btnSignup_Click" />
         </form>
+        <asp:Label ID="lblMsg" runat="server" ForeColor="Red"></asp:Label>
     </div>
 
 </asp:Content>

@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29418.71
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "zomigy", "zomigy\zomigy.csproj", "{C58C99C8-F94F-4B12-AB66-2208C9F9DCEF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C58C99C8-F94F-4B12-AB66-2208C9F9DCEF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C58C99C8-F94F-4B12-AB66-2208C9F9DCEF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C58C99C8-F94F-4B12-AB66-2208C9F9DCEF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C58C99C8-F94F-4B12-AB66-2208C9F9DCEF}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {7423AC9D-9A7D-4E90-ADE0-5D353D3F7559}
+	EndGlobalSection
+EndGlobal

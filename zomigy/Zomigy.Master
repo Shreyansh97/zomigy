@@ -1,0 +1,18 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Zomigy.Master.cs" Inherits="zomigy.Site1" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <title></title>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <header>
+
+    </header>
+    <asp:ContentPlaceHolder runat="server" ID="Main"></asp:ContentPlaceHolder>
+    <footer></footer>
+</body>
+</html>

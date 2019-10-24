@@ -5,18 +5,18 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-
 namespace zomigy
 {
-    public partial class RestaurantList : System.Web.UI.Page
+    public partial class Register : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if(!IsPostBack)
-            {
-                UserData.Text = Master.CurrentUser.Admin.ToString();
-                Email.Text = Master.CurrentUser.Name;
-            }
+
+        }
+
+        protected void btnSignup_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

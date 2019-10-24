@@ -11,43 +11,43 @@ namespace zomigy
 {
 
 
-    public partial class Index
+    public partial class Register
     {
 
         /// <summary>
-        /// txtLoginEmail control.
+        /// txtSignupName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtLoginEmail;
+        protected global::System.Web.UI.WebControls.TextBox txtSignupName;
 
         /// <summary>
-        /// txtLoginPass control.
+        /// txtSignupEmail control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtLoginPass;
+        protected global::System.Web.UI.WebControls.TextBox txtSignupEmail;
 
         /// <summary>
-        /// btnLogin control.
+        /// txtSignupPass control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnLogin;
+        protected global::System.Web.UI.WebControls.TextBox txtSignupPass;
 
         /// <summary>
-        /// lblLoginMsg control.
+        /// btnSignup control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblLoginMsg;
+        protected global::System.Web.UI.WebControls.Button btnSignup;
     }
 }

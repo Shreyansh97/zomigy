@@ -8,7 +8,7 @@
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
 </head>
-<body style="background-image: url('bg.jpg'); background-size:cover">
+<body style="background: linear-gradient(rgba(255,255,255,.8), rgba(255,255,255,.8)), url('bg.jpg'); background-size:cover;">
     <header>
         <h1>Zomigy</h1>
         <div style="text-align:right;">

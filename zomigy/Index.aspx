@@ -13,6 +13,8 @@
             <br />
             <asp:Button ID="btnLogin" runat="server" Text="Login" OnClick="btnLogin_Click" />
         </form>
+        <br />
+        <a href="Register.aspx">Register</a>
         <asp:Label ID="lblLoginMsg" runat="server" ForeColor="Red"></asp:Label>
     </div>
 </asp:Content>

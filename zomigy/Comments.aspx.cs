@@ -22,7 +22,7 @@ namespace zomigy
         {
             SqlConnection con;
 
-            string cmd = "select Comments.Id as Id, [Users].[name] as [User], Restaurants.name as Restaurant, Comments.Rating as Rating, Comments.Text as Text, Comments.Timestamp as Timestamp, Comments.Status as Status from Comments JOIN [Users] on Comments.[User] = [Users].Id JOIN Restaurants ON Restaurants.Id = Comments.Restaurant";
+            string cmd = "select Comments.Id as Id, [Users].[name] as [User], Restaurants.name as Restaurant, Comments.Rating as Rating, Comments.Text as Text, Comments.Timestamp as Timestamp, Comments.Status as Status from Comments JOIN [Users] on Comments.[User] = [Users].Id JOIN Restaurants ON Restaurants.Id = Comments.Restaurant ORDER BY Timestamp DESC";
             using (con = new SqlConnection(cs))
             {
                 SqlDataAdapter dap = new SqlDataAdapter(cmd, con);
@@ -94,10 +94,21 @@ namespace zomigy
 
                     con.Open();
                     cmd.ExecuteNonQuery();
+                    con.Close();
                 }
             }
 
-            commentsGrid.EditIndex = -1;
+            using (con = new SqlConnection(cs))
+            {
+                using(cmd = new SqlCommand("UPDATE Restaurants SET rating = (SELECT ISNULL(AVG(rating*1.0),0) FROM Comments WHERE Restaurant = Restaurants.Id AND Status='approved')", con))
+                {
+                    con.Open();
+                    cmd.ExecuteNonQuery();
+                    con.Close();
+                }
+            }
+
+                commentsGrid.EditIndex = -1;
             commentsGrid_RowDataBound();
         }
 

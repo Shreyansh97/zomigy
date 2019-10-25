@@ -171,8 +171,8 @@ namespace zomigy
                     cmd.Parameters.AddWithValue("@user", Master.CurrentUser.Id);
                     cmd.Parameters.AddWithValue("@rating", rating);
                     cmd.Parameters.AddWithValue("@text", review);
-                    //cmd.Parameters.AddWithValue("@status", "Pending");
-                    cmd.Parameters.AddWithValue("@status", "Approved");
+                    cmd.Parameters.AddWithValue("@status", "Pending");
+                    //cmd.Parameters.AddWithValue("@status", "Approved");
 
                     con.Open();
                     cmd.ExecuteNonQuery();

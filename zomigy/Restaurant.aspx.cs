@@ -163,14 +163,12 @@ namespace zomigy
 
             string cmdText = "INSERT INTO Comments (Restaurant, [User], Rating, Text, Status) Values(@res, @user, @rating, @text, @status)";
 
-            Session["user"] = 2;
-
             using (con = new SqlConnection(cs))
             {
                 using(cmd = new SqlCommand(cmdText, con))
                 {
                     cmd.Parameters.AddWithValue("@res", resId);
-                    cmd.Parameters.AddWithValue("@user", Session["user"]);
+                    cmd.Parameters.AddWithValue("@user", Master.CurrentUser.Id);
                     cmd.Parameters.AddWithValue("@rating", rating);
                     cmd.Parameters.AddWithValue("@text", review);
                     //cmd.Parameters.AddWithValue("@status", "Pending");

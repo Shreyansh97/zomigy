@@ -114,6 +114,15 @@ namespace zomigy
         protected global::System.Web.UI.WebControls.TextBox reviewText;
 
         /// <summary>
+        /// reviewReq control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator reviewReq;
+
+        /// <summary>
         /// reviewSubmit control.
         /// </summary>
         /// <remarks>

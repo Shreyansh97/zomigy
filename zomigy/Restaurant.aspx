@@ -1,7 +1,5 @@
 ﻿<%@ Page Title="Restaurant" Language="C#" MasterPageFile="~/Zomigy.Master" AutoEventWireup="True" CodeBehind="Restaurant.aspx.cs" Inherits="zomigy.Restaurant" Theme="Dark" %>
-
 <%@ MasterType VirtualPath="~/Zomigy.Master" %>
-
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="Main" runat="server">
@@ -40,6 +38,7 @@
             <asp:Label ID="reviewHeadingLabel" runat="server" Text="Your Comment:" />
             <br />
             <asp:TextBox ID="reviewText" runat="server" placeholder="Type Here" TextMode="MultiLine" />
+            <asp:RequiredFieldValidator ID="reviewReq" ControlToValidate="reviewText" Display="Dynamic" ErrorMessage="Comment can't be blank" runat="server"/>
 
             <br />
 

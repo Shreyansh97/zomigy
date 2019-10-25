@@ -35,7 +35,7 @@ namespace zomigy
                         }
                         else
                         {
-                            throw new Exception("user not found");
+                            throw new Exception("User not found");
                         }
                         conn.Close();
                     }

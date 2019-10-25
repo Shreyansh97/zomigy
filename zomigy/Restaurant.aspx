@@ -7,12 +7,16 @@
         <div>
             <asp:Label ID="restaurantNameLabel" runat="server" Text="Name Here" />
             <br />
+            <asp:Label Text="Label:" runat="server" />
             <asp:Label ID="ratingLabel" runat="server" Text="Rating Here" />
             <br />
+            <asp:Label Text="Cuisine:" runat="server" />
             <asp:Label ID="cuisineLabel" runat="server" Text="Cuisine Here" />
             <br />
+            <asp:Label Text="Location:" runat="server" />
             <asp:Label ID="locLabel" runat="server" Text="Location Here" />
             <br />
+            <asp:Label Text="Views:" runat="server" />
             <asp:Label ID="viewLabel" runat="server" Text="Views Here" />
         </div>
         <br />
@@ -25,6 +29,9 @@
                 <asp:ListItem>4</asp:ListItem>
                 <asp:ListItem>5</asp:ListItem>
             </asp:RadioButtonList>
+
+            <asp:RequiredFieldValidator ID="ratingReq" ControlToValidate="ratingChoice" Display="Dynamic" ErrorMessage="Rating can't be blank" runat="server"/>
+
             <br />
 
             <asp:Label ID="reviewHeadingLabel" runat="server" Text="Your Comment:" />
@@ -33,7 +40,7 @@
 
             <br />
 
-            <asp:Button ID="reviewSubmit" Text="Submit" OnClick="reviewSubmit_Click" runat="server" />
+            <asp:Button ID="reviewSubmit" Text="Submit" OnClick="reviewSubmit_Click" runat="server" CausesValidation="true"/>
 
         </div>
         <br />
@@ -51,7 +58,5 @@
                 </table>
             </ItemTemplate>
         </asp:Repeater>
-
-
     </form>
 </asp:Content>

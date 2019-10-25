@@ -46,7 +46,7 @@ namespace zomigy
 
             int total = 0, nrows = 0;
 
-            string cmdText = "SELECT [user], rating, text, status FROM COMMENTS where restaurant=@restaurant";
+            string cmdText = "SELECT [Users].[name] as name, rating, text, status FROM COMMENTS INNER JOIN [Users] on [Users].[id]=Comments.[User] where Comments.restaurant=@restaurant";
             using (con = new SqlConnection(cs))
             {
                 using (cmd = new SqlCommand(cmdText, con))
@@ -64,7 +64,7 @@ namespace zomigy
 
                             if (String.IsNullOrEmpty(rd["text"].ToString())) continue;
 
-                            CommentList.Add(new CommentEntry(rd["user"].ToString(),
+                            CommentList.Add(new CommentEntry(rd["name"].ToString(),
                                 int.Parse(rd["rating"].ToString()),
                                 rd["text"].ToString()));
 
@@ -156,7 +156,7 @@ namespace zomigy
 
             string cmdText = "INSERT INTO Comments (Restaurant, [User], Rating, Text, Status) Values(@res, @user, @rating, @text, @status)";
 
-            Session["user"] = 1;
+            Session["user"] = 2;
 
             using (con = new SqlConnection(cs))
             {

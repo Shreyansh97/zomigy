@@ -10,11 +10,21 @@
 </head>
 <body>
     <header>
-
+        <h1>Zomigy</h1>
+        <div style="text-align:right;">
+            <a href="Home.aspx">Home</a>
+        </div>
+        <hr />
+        <br />
     </header>
 
      <asp:ContentPlaceHolder ID="Main" runat="server"></asp:ContentPlaceHolder>
 
-    <footer></footer>
+    <footer style="text-align:center">
+        <br />
+        <hr />
+        <br />
+        Made by Dheeraj and Shreyansh
+    </footer>
 </body>
 </html>

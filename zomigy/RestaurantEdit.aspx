@@ -14,10 +14,10 @@
         <label>Cuisine:</label>
         <asp:TextBox ID="txtCuisine" runat="server"></asp:TextBox>
         <br />
-        <asp:Button ID="btnSubmit" runat="server" OnClick="btnSubmit_Click" Text="Submit" />
-        <asp:RequiredFieldValidator ControlToValidate="txtName" runat="server"></asp:RequiredFieldValidator>
-        <asp:RequiredFieldValidator ControlToValidate="txtLocation" runat="server"></asp:RequiredFieldValidator>
-        <asp:RequiredFieldValidator ControlToValidate="txtCuisine" runat="server"></asp:RequiredFieldValidator>
+        <asp:Button ID="btnSubmit" runat="server" OnClick="btnSubmit_Click" Text="Submit" CausesValidation="true" />
+        <asp:RequiredFieldValidator ControlToValidate="txtName" ErrorMessage="Name cannot be blank" runat="server"></asp:RequiredFieldValidator><br />
+        <asp:RequiredFieldValidator ControlToValidate="txtLocation" ErrorMessage="Location cannot be blank" runat="server"></asp:RequiredFieldValidator><br />
+        <asp:RequiredFieldValidator ControlToValidate="txtCuisine" ErrorMessage="Cuisine cannot be blank" runat="server"></asp:RequiredFieldValidator>
         <asp:Label ID="msg" runat="server"></asp:Label>
     </form>
 </asp:Content>

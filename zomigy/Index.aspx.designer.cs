@@ -11,7 +11,7 @@ namespace zomigy
 {
 
 
-    public partial class WebForm1
+    public partial class Index
     {
     }
 }

@@ -11,7 +11,7 @@ namespace zomigy
 {
 
 
-    public partial class Site1
+    public partial class Zomigy
     {
 
         /// <summary>

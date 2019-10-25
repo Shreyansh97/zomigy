@@ -1,4 +1,4 @@
-﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Zomigy.Master.cs" %>
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Zomigy.master.cs" Inherits="zomigy.Zomigy" %>
 
 <!DOCTYPE html>
 
@@ -12,7 +12,9 @@
     <header>
 
     </header>
-    <asp:ContentPlaceHolder runat="server" ID="Main"></asp:ContentPlaceHolder>
+
+     <asp:ContentPlaceHolder ID="Main" runat="server"></asp:ContentPlaceHolder>
+
     <footer></footer>
 </body>
 </html>

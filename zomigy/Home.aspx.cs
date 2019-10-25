@@ -4,6 +4,8 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Data.SqlClient;
+using System.Web.Configuration;
 
 
 namespace zomigy
@@ -12,11 +14,6 @@ namespace zomigy
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if(!IsPostBack)
-            {
-                UserData.Text = Master.CurrentUser.Admin.ToString();
-                Email.Text = Master.CurrentUser.Name;
-            }
         }
     }
 }

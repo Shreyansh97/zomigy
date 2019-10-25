@@ -31,7 +31,7 @@ namespace zomigy
         }
         protected List<CommentEntry> CommentList;
         static string cs;
-        int resId;
+        public int resId;
         public Restaurant() 
         {
             CommentList = new List<CommentEntry>();
@@ -70,6 +70,7 @@ namespace zomigy
 
                         }
                     }
+                    con.Close();
                 }
             }
             commentsGrid.DataSource = CommentList;
@@ -78,7 +79,7 @@ namespace zomigy
             if (nrows == 0)
                 ratingLabel.Text = "No Ratings Yet";
             else
-                ratingLabel.Text = String.Format("{0:0.00}", 1.0*total/nrows);
+                ratingLabel.Text = String.Format("{0:0.00}", 1.0 * total / nrows);
         }
 
         void Update_View_Count()
@@ -101,11 +102,17 @@ namespace zomigy
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Request.QueryString["restaurant"] == null)
+            {
+                Response.Redirect("Home.aspx");
+                return;
+            }
             if (IsPostBack) return;
 
             Check_Restaurant_Exists();
             Update_View_Count();
             Load_List();
+            this.DataBind();
         }
 
         protected void Check_Restaurant_Exists()
@@ -175,6 +182,21 @@ namespace zomigy
             }
 
             Load_List();
+        }
+
+        protected void btnDelete_Click(object sender, EventArgs e)
+        {
+            using(var con = new SqlConnection(WebConfigurationManager.ConnectionStrings["localdb"].ConnectionString))
+            {
+                using(var cmd = new SqlCommand("DELETE FROM Restaurants WHERE Id=@id", con))
+                {
+                    cmd.Parameters.AddWithValue("@id", Request.QueryString["restaurant"]);
+                    con.Open();
+                    cmd.ExecuteNonQuery();
+                    con.Close();
+                }
+            }
+            Response.Redirect("Home.aspx");
         }
     }
 }

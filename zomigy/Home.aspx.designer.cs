@@ -15,22 +15,13 @@ namespace zomigy
     {
 
         /// <summary>
-        /// Email control.
+        /// Restaurants control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Email;
-
-        /// <summary>
-        /// UserData control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label UserData;
+        protected global::System.Web.UI.WebControls.SqlDataSource Restaurants;
 
         /// <summary>
         /// Master property.

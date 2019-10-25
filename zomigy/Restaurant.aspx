@@ -1,23 +1,26 @@
 ﻿<%@ Page Title="Restaurant" Language="C#" MasterPageFile="~/Zomigy.Master" AutoEventWireup="True" CodeBehind="Restaurant.aspx.cs" Inherits="zomigy.Restaurant" Theme="Dark" %>
 
+<%@ MasterType VirtualPath="~/Zomigy.Master" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="Main" runat="server">
     <form runat="server">
+        <% if (Master.CurrentUser.Admin)
+            {%>
+        <a href="RestaurantEdit.aspx?id=<%# resId.ToString() %>">Edit</a>
+        <asp:Button ID="btnDelete" runat="server" Text="Delete" OnClick="btnDelete_Click" />
+        <% } %>
         <div>
-            <asp:Label ID="restaurantNameLabel" runat="server" Text="Name Here" />
+            Name:<asp:Label ID="restaurantNameLabel" runat="server" Text="Name Here" />
             <br />
-            <asp:Label Text="Label:" runat="server" />
-            <asp:Label ID="ratingLabel" runat="server" Text="Rating Here" />
+            Rating:<asp:Label ID="ratingLabel" runat="server" Text="Rating Here" />
             <br />
-            <asp:Label Text="Cuisine:" runat="server" />
-            <asp:Label ID="cuisineLabel" runat="server" Text="Cuisine Here" />
+            Cuisine:<asp:Label ID="cuisineLabel" runat="server" Text="Cuisine Here" />
             <br />
-            <asp:Label Text="Location:" runat="server" />
-            <asp:Label ID="locLabel" runat="server" Text="Location Here" />
+            Location:<asp:Label ID="locLabel" runat="server" Text="Location Here" />
             <br />
-            <asp:Label Text="Views:" runat="server" />
-            <asp:Label ID="viewLabel" runat="server" Text="Views Here" />
+            Views:<asp:Label ID="viewLabel" runat="server" Text="Views Here" />
         </div>
         <br />
         <div>

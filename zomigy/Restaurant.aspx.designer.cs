@@ -15,6 +15,15 @@ namespace zomigy
     {
 
         /// <summary>
+        /// btnDelete control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnDelete;
+
+        /// <summary>
         /// restaurantNameLabel control.
         /// </summary>
         /// <remarks>
@@ -121,5 +130,19 @@ namespace zomigy
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Repeater commentsGrid;
+
+        /// <summary>
+        /// Master property.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated property.
+        /// </remarks>
+        public new zomigy.Zomigy Master
+        {
+            get
+            {
+                return ((zomigy.Zomigy)(base.Master));
+            }
+        }
     }
 }

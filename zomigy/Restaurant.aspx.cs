@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Web.Configuration;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Data.SqlClient;
 
 namespace zomigy
 {
@@ -27,19 +29,152 @@ namespace zomigy
                 Comment = _comment;
             }
         }
-
         protected List<CommentEntry> CommentList;
-        protected void Page_Load(object sender, EventArgs e)
+        static string cs;
+        int resId;
+        public Restaurant() 
         {
             CommentList = new List<CommentEntry>();
+            cs = WebConfigurationManager.ConnectionStrings["localdb"].ConnectionString;
+        }
 
-            // TODO: Populate CommentList from DB
+        void Load_List()
+        {
+            SqlConnection con;
+            SqlCommand cmd;
+            SqlDataReader rd;
 
-            CommentList.Add(new CommentEntry("Dheeraj", 5, "This was great!"));
-            CommentList.Add(new CommentEntry("Shreyansh", 4, "This was good."));
+            int total = 0, nrows = 0;
 
+            string cmdText = "SELECT [user], rating, text, status FROM COMMENTS where restaurant=@restaurant";
+            using (con = new SqlConnection(cs))
+            {
+                using (cmd = new SqlCommand(cmdText, con))
+                {
+                    cmd.Parameters.AddWithValue("@restaurant", resId);
+                    con.Open();
+                    rd = cmd.ExecuteReader();
+
+                    while (rd.Read())
+                    {
+                        if (rd["status"].ToString() == "Approved")
+                        {
+                            nrows++;
+                            total += int.Parse(rd["rating"].ToString());
+
+                            if (String.IsNullOrEmpty(rd["text"].ToString())) continue;
+
+                            CommentList.Add(new CommentEntry(rd["user"].ToString(),
+                                int.Parse(rd["rating"].ToString()),
+                                rd["text"].ToString()));
+
+                        }
+                    }
+                }
+            }
             commentsGrid.DataSource = CommentList;
             commentsGrid.DataBind();
+
+            if (nrows == 0)
+                ratingLabel.Text = "No Ratings Yet";
+            else
+                ratingLabel.Text = String.Format("{0:0.00}", 1.0*total/nrows);
+        }
+
+        void Update_View_Count()
+        {
+            SqlConnection con;
+            SqlCommand cmd;
+
+            string cmdText = "UPDATE Restaurants SET Views = Views + 1 WHERE id=@resId";
+
+            using (con = new SqlConnection(cs))
+            {
+                using (cmd = new SqlCommand(cmdText, con))
+                {
+                    cmd.Parameters.AddWithValue("@resId", resId);
+                    con.Open();
+                    cmd.ExecuteNonQuery();
+                }
+            }
+        }
+
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            if (IsPostBack) return;
+
+            Check_Restaurant_Exists();
+            Update_View_Count();
+            Load_List();
+        }
+
+        protected void Check_Restaurant_Exists()
+        {
+            string restaurant = Request.QueryString["restaurant"];
+            if (String.IsNullOrEmpty(restaurant))
+                throw new HttpException(404, "Restaurant not found");
+
+            resId = int.Parse(restaurant);
+            SqlConnection con;
+            SqlCommand cmd;
+            SqlDataReader rd;
+            string cmdText = "SELECT * FROM Restaurants WHERE id=@restaurant";
+
+            using (con = new SqlConnection(cs))
+            {
+                using (cmd = new SqlCommand(cmdText, con))
+                {
+                    con.Open();
+                    cmd.Parameters.AddWithValue("@restaurant", resId);
+                    rd = cmd.ExecuteReader();
+
+                    if (!rd.Read())
+                    {
+                        throw new HttpException(404, "Restaurant not found");
+                    }
+                    
+                    restaurantNameLabel.Text = rd["name"].ToString();
+                    locLabel.Text = rd["location"].ToString();
+                    viewLabel.Text = rd["views"].ToString();
+                    cuisineLabel.Text = rd["cuisine"].ToString();
+
+                }
+            }
+        }
+
+        protected void reviewSubmit_Click(object sender, EventArgs e)
+        {
+            Check_Restaurant_Exists();
+            int rating = int.Parse(ratingChoice.SelectedValue);
+            string review = reviewText.Text;
+
+            if (CommentList == null)
+                CommentList = new List<CommentEntry>();
+
+            SqlConnection con;
+            SqlCommand cmd;
+
+            string cmdText = "INSERT INTO Comments (Restaurant, [User], Rating, Text, Status) Values(@res, @user, @rating, @text, @status)";
+
+            Session["user"] = 1;
+
+            using (con = new SqlConnection(cs))
+            {
+                using(cmd = new SqlCommand(cmdText, con))
+                {
+                    cmd.Parameters.AddWithValue("@res", resId);
+                    cmd.Parameters.AddWithValue("@user", Session["user"]);
+                    cmd.Parameters.AddWithValue("@rating", rating);
+                    cmd.Parameters.AddWithValue("@text", review);
+                    //cmd.Parameters.AddWithValue("@status", "Pending");
+                    cmd.Parameters.AddWithValue("@status", "Approved");
+
+                    con.Open();
+                    cmd.ExecuteNonQuery();
+                }
+            }
+
+            Load_List();
         }
     }
 }

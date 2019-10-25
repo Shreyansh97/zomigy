@@ -13,6 +13,10 @@
         <h1>Zomigy</h1>
         <div style="text-align:right;">
             <a href="Home.aspx">Home</a>
+            <%if (CurrentUser.Admin)
+                {%>
+            <a href="Comments.aspx">Comment Approval</a>
+            <%} %>
         </div>
         <hr />
         <br />

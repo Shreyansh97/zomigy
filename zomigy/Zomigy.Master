@@ -8,12 +8,12 @@
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
 </head>
-<body>
+<body style="background-image: url('bg.jpg'); background-size:cover">
     <header>
         <h1>Zomigy</h1>
         <div style="text-align:right;">
             <a href="Home.aspx">Home</a>
-            <%if (CurrentUser.Admin)
+            <%if (CurrentUser != null && CurrentUser.Admin)
                 {%>
             <a href="Comments.aspx">Comment Approval</a>
             <%} %>
